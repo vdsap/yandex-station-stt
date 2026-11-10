@@ -1,0 +1,12 @@
+{
+  "domain": "yandex_station_stt",
+  "name": "Yandex Station STT (Midi)",
+  "codeowners": ["@vdsap"],
+  "config_flow": true,
+  "documentation": "https://github.com/vdsap/yandex-station-stt",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/vdsap/yandex-station-stt/issues",
+  "requirements": ["wyoming>=1.5.0"],
+  "version": "1.0.0"
+}

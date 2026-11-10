@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Build & Publish Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Package HACS integration zip
+        run: |
+          cd custom_components
+          zip -r ../yandex_station_stt.zip yandex_station_stt
+          cd ..
+
+      - name: Package Models zip
+        run: |
+          zip -r yandex_stt_models.zip models/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            yandex_station_stt.zip
+            yandex_stt_models.zip
+          generate_release_notes: true
+          draft: false
+          prerelease: false

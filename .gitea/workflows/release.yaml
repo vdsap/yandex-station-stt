@@ -1,0 +1,35 @@
+name: Gitea Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Build & Publish Gitea Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Package HACS integration zip
+        run: |
+          cd custom_components
+          zip -r ../yandex_station_stt.zip yandex_station_stt
+          cd ..
+
+      - name: Package Models zip
+        run: |
+          zip -r yandex_stt_models.zip models/
+
+      - name: Create Gitea Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false

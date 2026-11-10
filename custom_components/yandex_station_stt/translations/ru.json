@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Настройка Yandex Station STT",
+        "description": "Укажите параметры подключения к серверу Wyoming Yandex Station STT.",
+        "data": {
+          "host": "Хост",
+          "port": "Порт"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не удалось подключиться к серверу Wyoming. Проверьте, запущен ли аддон или сервис."
+    },
+    "abort": {
+      "already_configured": "Это устройство уже настроено."
+    }
+  }
+}
