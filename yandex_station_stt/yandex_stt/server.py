@@ -91,7 +91,7 @@ class YandexWyomingEventHandler(AsyncEventHandler):
             text = ""
             if len(self._audio_buffer) > 0:
                 # 16-bit PCM mono expected
-                samples = np.frombuffer(self._audio_buffer, dtype=np.int16)
+                samples = np.frombuffer(bytes(self._audio_buffer), dtype=np.int16)
                 # Run transcription in thread pool so asyncio event loop stays responsive
                 loop = asyncio.get_running_loop()
                 text = await loop.run_in_executor(
@@ -100,7 +100,7 @@ class YandexWyomingEventHandler(AsyncEventHandler):
                 _LOGGER.info("Recognized: '%s'", text)
 
             await self.write_event(Transcript(text=text).event())
-            self._audio_buffer.clear()
+            self._audio_buffer = bytearray()
             self._is_transcribing = False
             return False  # End session
 
