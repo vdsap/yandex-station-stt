@@ -1,6 +1,6 @@
 name: "Yandex Station STT (Midi)"
 description: "Полностью автономное распознавание речи из Яндекс Станции Миди (Streaming Conformer RNN-T) по протоколу Wyoming."
-version: "1.0.0"
+version: "1.0.1"
 slug: "yandex_station_stt"
 url: "https://github.com/vdsap/yandex-station-stt"
 arch:
