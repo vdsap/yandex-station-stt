@@ -21,7 +21,7 @@ RUN pip install --upgrade pip && \
 # Copy application files
 COPY yandex_stt /app/yandex_stt
 COPY models /app/models
-COPY yandex_station_stt/run.sh /app/run.sh
+COPY run.sh /app/run.sh
 
 RUN chmod +x /app/run.sh
 

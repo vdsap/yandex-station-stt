@@ -48,6 +48,10 @@ def load_wav(wav_path: str) -> tuple[np.ndarray, int]:
 
 
 def main() -> None:
+    default_models = os.path.join(current_dir, "models")
+    if not os.path.exists(default_models):
+        default_models = os.path.join(current_dir, "yandex_station_stt", "models")
+
     parser = argparse.ArgumentParser(
         description="Offline speech recognition using Yandex Station Midi Conformer RNN-T model."
     )
@@ -62,7 +66,7 @@ def main() -> None:
         "--models-dir",
         "-m",
         type=str,
-        default=os.path.join(current_dir, "models"),
+        default=default_models,
         help="Path to directory containing .tflite models and subword_dict.txt.",
     )
     args = parser.parse_args()
