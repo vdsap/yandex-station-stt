@@ -1,5 +1,4 @@
-ARG BUILD_FROM=python:3.12-slim-bookworm
-FROM ${BUILD_FROM}
+FROM python:3.12-slim-bookworm
 
 ENV PIP_NO_CACHE_DIR=1 \
     PYTHONUNBUFFERED=1
